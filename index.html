@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtlasKit Notes - Your Personal Note Taking App</title>
+    
+    <!-- AtlasKit CSS Imports -->
+    <link rel="stylesheet" href="https://unpkg.com/@atlaskit/css-reset@latest" />
+    <link rel="stylesheet" href="https://unpkg.com/@atlaskit/reduced-ui-pack@latest" />
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <ak-grid>
+        <!-- Header Section -->
+        <ak-grid-column size="12">
+            <div class="app-header">
+                <h1>
+                    <svg focusable="false" width="24" height="24" viewBox="0 0 30 30" style="margin-right: 8px;">
+                        <use xlink:href="#ak-icon-addon" />
+                    </svg>
+                    AtlasKit Notes
+                </h1>
+                <p class="app-subtitle">Organize your thoughts with Atlassian-styled notes</p>
+            </div>
+        </ak-grid-column>
+
+        <!-- Main Content Area -->
+        <ak-grid-column size="8">
+            <!-- Note Creation Form -->
+            <div class="note-creation-section">
+                <h2>Create New Note</h2>
+                <form id="noteForm" class="note-form">
+                    <div class="ak-field-group">
+                        <label for="noteTitle">Note Title</label>
+                        <input type="text" class="ak-field-text" id="noteTitle" name="noteTitle" placeholder="Enter your note title..." required>
+                    </div>
+                    
+                    <div class="ak-field-group">
+                        <label for="noteCategory">Category</label>
+                        <select class="ak-field-select" id="noteCategory" name="noteCategory">
+                            <option value="general">General</option>
+                            <option value="work">Work</option>
+                            <option value="personal">Personal</option>
+                            <option value="ideas">Ideas</option>
+                            <option value="todo">To-Do</option>
+                        </select>
+                    </div>
+                    
+                    <div class="ak-field-group">
+                        <label for="noteContent">Note Content</label>
+                        <textarea class="ak-field-textarea" rows="6" id="noteContent" name="noteContent" placeholder="Write your note here..." required></textarea>
+                    </div>
+                    
+                    <div class="ak-field-group">
+                        <div class="ak-field-checkbox">
+                            <input type="checkbox" name="isPinned" id="isPinned" value="pinned">
+                            <label for="isPinned">Pin this note to top</label>
+                        </div>
+                    </div>
+                    
+                    <div class="ak-field-group">
+                        <button type="submit" class="ak-button ak-button__appearance-primary">
+                            <svg focusable="false" width="16" height="16" viewBox="0 0 30 30" style="margin-right: 4px;">
+                                <use xlink:href="#ak-icon-add" />
+                            </svg>
+                            Add Note
+                        </button>
+                        <button type="button" id="clearForm" class="ak-button ak-button__appearance-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Search and Filter Section -->
+            <div class="search-filter-section">
+                <h3>Search & Filter Notes</h3>
+                <div class="ak-field-group">
+                    <label for="searchNotes">Search Notes</label>
+                    <input type="search" class="ak-field-search" id="searchNotes" name="searchNotes" placeholder="Search by title or content...">
+                </div>
+                
+                <div class="ak-field-group">
+                    <label for="filterCategory">Filter by Category</label>
+                    <select class="ak-field-select" id="filterCategory" name="filterCategory">
+                        <option value="all">All Categories</option>
+                        <option value="general">General</option>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="ideas">Ideas</option>
+                        <option value="todo">To-Do</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Notes Display Area -->
+            <div class="notes-section">
+                <h3>Your Notes</h3>
+                <div id="notesContainer" class="notes-container">
+                    <!-- Notes will be dynamically added here -->
+                </div>
+                
+                <div id="noNotesMessage" class="no-notes-message" style="display: none;">
+                    <p>No notes found. Create your first note above!</p>
+                </div>
+            </div>
+        </ak-grid-column>
+
+        <!-- Sidebar -->
+        <ak-grid-column size="4">
+            <div class="sidebar">
+                <h2>Quick Stats</h2>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <svg focusable="false" width="20" height="20" viewBox="0 0 30 30">
+                            <use xlink:href="#ak-icon-activity" />
+                        </svg>
+                        <span>Total Notes: <strong id="totalNotes">0</strong></span>
+                    </div>
+                    <div class="stat-item">
+                        <svg focusable="false" width="20" height="20" viewBox="0 0 30 30">
+                            <use xlink:href="#ak-icon-addon" />
+                        </svg>
+                        <span>Pinned Notes: <strong id="pinnedNotes">0</strong></span>
+                    </div>
+                </div>
+
+                <h3>Category Overview</h3>
+                <div id="categoryStats" class="category-stats">
+                    <!-- Category statistics will be added here -->
+                </div>
+
+                <h3>Quick Actions</h3>
+                <div class="quick-actions">
+                    <button type="button" id="exportNotes" class="ak-button ak-button__appearance-link">
+                        Export All Notes
+                    </button>
+                    <button type="button" id="clearAllNotes" class="ak-button ak-button__appearance-link" data-ak-tooltip="This will delete all notes permanently" data-ak-tooltip-position="left">
+                        Clear All Notes
+                    </button>
+                </div>
+
+                <div class="app-info">
+                    <h3>About</h3>
+                    <p>A simple note-taking app built with Atlassian's AtlasKit CSS framework. Features include note creation, categorization, search, and local storage persistence.</p>
+                    
+                    <div class="icon-showcase">
+                        <h4>AtlasKit Icons</h4>
+                        <div class="icons-row">
+                            <svg focusable="false" width="24" height="24" viewBox="0 0 30 30"><use xlink:href="#ak-icon-atlassian" /></svg>
+                            <svg focusable="false" width="24" height="24" viewBox="0 0 30 30"><use xlink:href="#ak-icon-activity" /></svg>
+                            <svg focusable="false" width="24" height="24" viewBox="0 0 30 30"><use xlink:href="#ak-icon-add-item"/></svg>
+                            <svg focusable="false" width="24" height="24" viewBox="0 0 30 30"><use xlink:href="#ak-icon-add" /></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ak-grid-column>
+    </ak-grid>
+
+    <!-- Edit Note Modal (hidden by default) -->
+    <div id="editModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Edit Note</h3>
+            <form id="editNoteForm">
+                <div class="ak-field-group">
+                    <label for="editNoteTitle">Note Title</label>
+                    <input type="text" class="ak-field-text" id="editNoteTitle" name="editNoteTitle" required>
+                </div>
+                
+                <div class="ak-field-group">
+                    <label for="editNoteCategory">Category</label>
+                    <select class="ak-field-select" id="editNoteCategory" name="editNoteCategory">
+                        <option value="general">General</option>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="ideas">Ideas</option>
+                        <option value="todo">To-Do</option>
+                    </select>
+                </div>
+                
+                <div class="ak-field-group">
+                    <label for="editNoteContent">Note Content</label>
+                    <textarea class="ak-field-textarea" rows="6" id="editNoteContent" name="editNoteContent" required></textarea>
+                </div>
+                
+                <div class="ak-field-group">
+                    <div class="ak-field-checkbox">
+                        <input type="checkbox" name="editIsPinned" id="editIsPinned" value="pinned">
+                        <label for="editIsPinned">Pin this note to top</label>
+                    </div>
+                </div>
+                
+                <div class="ak-field-group">
+                    <button type="submit" class="ak-button ak-button__appearance-primary">Save Changes</button>
+                    <button type="button" id="cancelEdit" class="ak-button ak-button__appearance-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

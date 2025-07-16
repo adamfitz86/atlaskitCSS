@@ -1,0 +1,525 @@
+/* AtlasKit Integration Fixes */
+
+/* Ensure AtlasKit styles are properly loaded */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    background-color: #FAFBFC;
+    margin: 0;
+    padding: 1rem;
+}
+
+/* Fix for select dropdowns that might not be styled */
+.ak-field-select {
+    appearance: none !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 0.7rem center !important;
+    background-size: 1em !important;
+    padding-right: 2.5rem !important;
+}
+
+/* Ensure grid system works properly */
+ak-grid {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+ak-grid-column {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* AtlasKit button fixes */
+.ak-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 500;
+    line-height: 1;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.ak-button__appearance-primary {
+    background-color: #0052CC;
+    color: #FFFFFF;
+}
+
+.ak-button__appearance-primary:hover {
+    background-color: #0065FF;
+}
+
+.ak-button__appearance-secondary {
+    background-color: #FAFBFC;
+    border: 1px solid #DFE1E6;
+    color: #42526E;
+}
+
+.ak-button__appearance-secondary:hover {
+    background-color: #F4F5F7;
+}
+
+.ak-button__appearance-link {
+    background: none;
+    color: #0052CC;
+    padding: 0.25rem 0.5rem;
+}
+
+.ak-button__appearance-link:hover {
+    color: #0065FF;
+    text-decoration: underline;
+}
+
+/* AtlasKit form field fixes */
+.ak-field-group {
+    margin-bottom: 1rem;
+}
+
+.ak-field-group label {
+    color: #172B4D;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.ak-field-text,
+.ak-field-textarea,
+.ak-field-select,
+.ak-field-search,
+.ak-field-email,
+.ak-field-password {
+    background-color: #FAFBFC;
+    border: 2px solid #DFE1E6;
+    border-radius: 3px;
+    color: #172B4D;
+    font-size: 14px;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ak-field-text:focus,
+.ak-field-textarea:focus,
+.ak-field-select:focus,
+.ak-field-search:focus,
+.ak-field-email:focus,
+.ak-field-password:focus {
+    border-color: #0052CC;
+    outline: none;
+    box-shadow: 0 0 0 1px #0052CC;
+}
+
+.ak-field-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Checkbox styling */
+.ak-field-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ak-field-checkbox input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+/* Custom styles for AtlasKit Notes app */
+
+/* App Header */
+.app-header {
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 2px solid #DFE1E6;
+    margin-bottom: 2rem;
+}
+
+.app-header h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    color: #172B4D;
+}
+
+.app-subtitle {
+    color: #6B778C;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Note Creation Section */
+.note-creation-section {
+    background: #F4F5F7;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: 1px solid #DFE1E6;
+}
+
+.note-form {
+    margin: 0;
+}
+
+/* Search and Filter Section */
+.search-filter-section {
+    background: #FFFFFF;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: 1px solid #DFE1E6;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Notes Container */
+.notes-section {
+    margin-bottom: 2rem;
+}
+
+.notes-container {
+    display: grid;
+    gap: 1rem;
+}
+
+.note-item {
+    background: #FFFFFF;
+    border: 1px solid #DFE1E6;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.note-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.note-item.pinned {
+    border-left: 4px solid #0052CC;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F4F5F7 100%);
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.note-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #172B4D;
+    margin: 0;
+    flex: 1;
+    margin-right: 1rem;
+}
+
+.note-actions {
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.note-item:hover .note-actions {
+    opacity: 1;
+}
+
+.note-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: #6B778C;
+}
+
+.note-category {
+    background: #DFE1E6;
+    color: #172B4D;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.note-category.work { background: #E3FCEF; color: #006644; }
+.note-category.personal { background: #DEEBFF; color: #0052CC; }
+.note-category.ideas { background: #FFF0B3; color: #B38600; }
+.note-category.todo { background: #FFEBE6; color: #BF2600; }
+.note-category.general { background: #EAE6FF; color: #5243AA; }
+
+.note-date {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.note-content {
+    color: #42526E;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+.pinned-indicator {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: #0052CC;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background: #F4F5F7;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #DFE1E6;
+    height: fit-content;
+    position: sticky;
+    top: 1rem;
+}
+
+.stats-container {
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    color: #42526E;
+}
+
+.category-stats {
+    margin-bottom: 2rem;
+}
+
+.category-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #DFE1E6;
+    text-transform: capitalize;
+    color: #42526E;
+}
+
+.category-stat:last-child {
+    border-bottom: none;
+}
+
+.quick-actions {
+    margin-bottom: 2rem;
+}
+
+.quick-actions .ak-button {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.app-info {
+    border-top: 1px solid #DFE1E6;
+    padding-top: 1.5rem;
+}
+
+.app-info p {
+    font-size: 0.875rem;
+    color: #6B778C;
+    line-height: 1.5;
+}
+
+.icon-showcase {
+    margin-top: 1rem;
+}
+
+.icons-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.icons-row svg {
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.icons-row svg:hover {
+    opacity: 1;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #FFFFFF;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #172B4D;
+}
+
+/* No Notes Message */
+.no-notes-message {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6B778C;
+    background: #F4F5F7;
+    border-radius: 8px;
+    border: 2px dashed #DFE1E6;
+}
+
+.no-notes-message p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Button Enhancements */
+.ak-button {
+    transition: all 0.2s ease;
+}
+
+.ak-button:hover {
+    transform: translateY(-1px);
+}
+
+.ak-button svg {
+    vertical-align: middle;
+}
+
+/* Action Buttons for Notes */
+.note-action-btn {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.note-action-btn:hover {
+    background: #F4F5F7;
+}
+
+.note-action-btn.edit {
+    color: #0052CC;
+}
+
+.note-action-btn.delete {
+    color: #BF2600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .app-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .note-creation-section,
+    .search-filter-section,
+    .sidebar {
+        padding: 1rem;
+    }
+    
+    .note-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .note-actions {
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+    
+    .note-meta {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .modal-content {
+        padding: 1rem;
+        margin: 1rem;
+    }
+}
+
+/* Animation for new notes */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.note-item.new-note {
+    animation: slideInUp 0.3s ease-out;
+}
+
+/* Search highlight */
+.search-highlight {
+    background: #FFF0B3;
+    padding: 0 0.25rem;
+    border-radius: 2px;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Empty state enhancement */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6B778C;
+}
+
+.empty-state svg {
+    opacity: 0.3;
+    margin-bottom: 1rem;
+}
